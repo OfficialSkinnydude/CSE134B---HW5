@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="form-with-js.css">
+<title>Contact Form</title>
+</head>
+<body>
+
+
+<div class="navigator">
+    <a href="index.html"><img src="assets/home.png" alt="homeIcon"></a>
+    <button id="toggleTheme">Theme Toggle</button>
+    <ul class="menu">
+        <li><a class="active" href="aboutMe.html">About Me</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="form-no-js.html">Contact</a></li>
+    </ul>
+</div>
+
+<h1>Contact Form</h1>
+<main>
+    <form action="https://httpbin.org/post" method="POST" class="form" id="form" novalidate>
+        <label>Name:</label>
+        <input id ="fullName" type="text" name="fullName" placeholder="Your Name..." required minlength="1" maxlength="150" pattern="[A-Za-z ]+"
+            title="Only letters and spaces allowed.">
+
+        <label>Email:</label>
+        <input id ="userEmail" type="email" name="your email" placeholder="Your Email" required minlength="1" maxlength="50">
+
+        <label>Phone Number:</label>
+        <input id="userTel" type="tel" name="your phone number" placeholder="Your Phone Number..." minlength="8" maxlength="15" pattern="[0-9]+" title="Only numbers allowed">
+
+        <label>Message:</label>
+        <textarea name="your Message" placeholder="Message Here" required minlength="1" maxlength="500"></textarea>
+        <p id="characterCount">500/500</p>
+        <input type="hidden" name="possible_bot" value="true">
+        <input type="hidden" name="formErrorsField" id="formErrorsField">
+        <button>Submit</button>
+        
+        <output id="errorMessage"></output>
+        <output id="hintMessage"></output>
+    </form>
+</main>
+
+<footer>
+    <p>Author: <strong>Jose Arteaga</strong></p>
+</footer>
+<script src="script.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
