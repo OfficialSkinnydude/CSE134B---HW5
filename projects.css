@@ -99,7 +99,6 @@ video{
 .video{
     display: flex;
     justify-content: center;
-    border-radius: 20px;
 }
 .firstProject{
     display: flex;
@@ -157,8 +156,8 @@ project-card:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
-project-card span{
-    color: black;
+project-card span{    
+    color: var(--primary-color);
     display: flex;
     flex-direction: row;
     padding-left: 5px;
@@ -171,6 +170,8 @@ project-card img{
     display: flex;
     flex-direction: row;
     justify-content:center;
+    margin-left: 5%;
+    margin-right: 5%;
     width: 200px;
     height: 300px;
     border-radius: 10px;

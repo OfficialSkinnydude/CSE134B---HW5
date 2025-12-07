@@ -21,10 +21,10 @@
 <article class="firstProject">
     <header>
         <h1>Vector Space</h1>
-        <p>Made by: Jose Arteaga</p>
+        <p>Made by: CSE-110 Team 26</p>
     </header>
     <picture>
-        <img src="assets/vectorSpaceMaze.png" alt="WebregToGoogleCalendarScreenshot" loading="lazy">
+        <img src="assets/vectorSpaceMaze.png" alt="vectorSpaceMaze" loading="lazy">
     </picture>
     <div class="video">
         <video controls>
@@ -32,31 +32,44 @@
         </video>
     </div>
     <h2>Description</h2>
-    <p>This is a firefox extension that allows UCSD students to import their course schedule to
-        Google Calendar with a click of a download. No csv downloads necessary. This can save a students
-        time by no thaving to input everything manually. Simply click on "import schedule", sign in 
-        with the google account you need, and click "Import Schedule" again. Simple as that. 
+    <p>Users face linear, quadratic, and absolute value problems based on the difficulty. 
+        When a user is faced with a problem, they can input parameters to an equation using the game keypad. 
+        When the user hits the submit button, the graph they plotted is shown on the screen and 
+        they move on to the next minigame depending on correctness.
     </p>
-    <h3>Scope of Work</h3>
+    <h3>Matching Minigame</h3>
     <p>
-        The duration of this project was a about a month of work. It started with me learning javascript and 
-        HTML. I learned the concept of "Manipulating the DOM", which is important for webscraping. I made a 
-        javascript program to scrape the course schedule using the DOM.
+        Users have to draw lines from boxes with answers to boxes with equations. 
+        On submission, they receive feedback on incorrect submissions via an AI model 
+        generating explanations for the equations.
     </p>
+    <h3>Maze Minigame</h3>
     <p>
-        Once the courses had been scraped, the courses are then stored in a hashtable.
-        We have a function that handles parsing that course data, organizing it by discussions, midterms, and finals, as well
-        as course code, professor, etc.
-        
-    </p>
-    <p>
-        Once the course have been parsed, the Google Calendar API comes in. We have functions that create 
-        events using the API. Now before all this info can be process, we must handle Google Auth2.0.
-        <b>This was the hardest part</b>. After many hours of figuring it out and looking at source code,
-        the Authoraztion was setup. After signing in with Google, the events are then processed with
-        the API and voilà, your schedule is set and imported. 
+        Users have to correctly select steps to solve each equation on screen between three choices within the time limit. 
+        This game also uses an AI model for equation feedback.
     </p>
 
+    <h3>Scope of Work</h3>
+    <p>
+        For this project, I worked on both the equation-generation engine and the game logic. 
+        Early on, I built a command-line prototype that generated and evaluated simple linear equations. 
+        As the project evolved, my teammate and I adopted the cortex-js/compute-engine library, 
+        which let us represent equations using MathJSON and generate step-by-step solutions. 
+    </p>
+    <p>
+        My main contributions were cleaning and refining the step-generation pipeline, 
+        removing parsing-only steps and ensuring that only meaningful algebra steps were shown, 
+        and implementing a full SolveX() function that isolates variables using MathJSON operations.
+    </p>
+    <p>
+        I also resolved multiple logic bugs related to step descriptions, equation updates, and transitions. 
+        On the front-end, I added display messaging, fixed timer and transition issues, 
+        and improved the overall game flow so the player receives correct feedback without overlapping events. 
+        I also formatted raw MathJSON steps into readable text for players. 
+    </p>
+    <p>
+        Overall, I contributed both algorithmic logic and front-end polish to create a smooth math-puzzle game.
+    </p>
 </article>
 
 
