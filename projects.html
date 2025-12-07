@@ -19,7 +19,7 @@
 </div>
 
 <h1>My Projects</h1>
-<article class="firstProject">
+<!-- <article class="firstProject">
     <header>
         <h2>Webreg to Google Calendar</h2>
         <p>Made by: Jose Arteaga</p>
@@ -78,7 +78,33 @@
         and an API called web3forms for storing information. Web3forms sends the information from your form 
         to an email you provide. From there, I can see what the user inputted. I deployed the website using github pages 
         and bought a custom domain for a year. 
-    </p>
+    </p> -->
+    <div class="projects">
+        <project-card class ="RSVP">
+            <span slot="title">RSVP Website</span>
+
+            <img slot="image" src="assets/projectCardRSVP.png" alt="rsvp screenshot" loading="lazy">
+
+            <span slot="description">This is a Description</span>
+        </project-card>
+
+        <project-card class ="Webreg">
+            <span slot="title">Webreg to Google Calendar</span>
+
+            <img slot="image" src="assets/WebregToGoogleCalendar_50.png" alt="rsvp screenshot" loading="lazy">
+
+            <span slot="description">This is a Description</span>
+        </project-card>
+        
+        <project-card class ="VectorSpace">
+            <span slot="title">Vector Space</span>
+
+            <img slot="image" src="assets/vectorSpace.png" alt="rsvp screenshot" loading="lazy">
+
+            <span slot="description">This is a Description</span>
+        </project-card>
+    </div>
+
 
 </article>
 
@@ -88,5 +114,6 @@
     <p>Author: <strong>Jose Arteaga</strong></p>
 </footer>
 <script src="theme.js"></script>
+<script src="projectJS.js"></script>
 </body>
 </html>
