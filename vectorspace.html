@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="projects.css">
+<title>My Projects</title>
+</head>
+<body>
+
+<div class="navigator">
+    <a href="index.html"><img src="assets/home.png" alt="homeIcon"></a>
+    <button id="toggleTheme">Theme Toggle</button>
+    <ul class="menu">
+        <li><a class="active" href="aboutMe.html">About Me</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="form-with-js.html">Contact</a></li>
+    </ul>
+</div>
+
+<article class="firstProject">
+    <header>
+        <h1>Vector Space</h1>
+        <p>Made by: Jose Arteaga</p>
+    </header>
+    <picture>
+        <img src="assets/vectorSpaceMaze.png" alt="WebregToGoogleCalendarScreenshot" loading="lazy">
+    </picture>
+    <div class="video">
+        <video controls>
+            <source src="assets/CSE110 Demo Video - Team 26.mp4" type="video/mp4">
+        </video>
+    </div>
+    <h2>Description</h2>
+    <p>This is a firefox extension that allows UCSD students to import their course schedule to
+        Google Calendar with a click of a download. No csv downloads necessary. This can save a students
+        time by no thaving to input everything manually. Simply click on "import schedule", sign in 
+        with the google account you need, and click "Import Schedule" again. Simple as that. 
+    </p>
+    <h3>Scope of Work</h3>
+    <p>
+        The duration of this project was a about a month of work. It started with me learning javascript and 
+        HTML. I learned the concept of "Manipulating the DOM", which is important for webscraping. I made a 
+        javascript program to scrape the course schedule using the DOM.
+    </p>
+    <p>
+        Once the courses had been scraped, the courses are then stored in a hashtable.
+        We have a function that handles parsing that course data, organizing it by discussions, midterms, and finals, as well
+        as course code, professor, etc.
+        
+    </p>
+    <p>
+        Once the course have been parsed, the Google Calendar API comes in. We have functions that create 
+        events using the API. Now before all this info can be process, we must handle Google Auth2.0.
+        <b>This was the hardest part</b>. After many hours of figuring it out and looking at source code,
+        the Authoraztion was setup. After signing in with Google, the events are then processed with
+        the API and voilà, your schedule is set and imported. 
+    </p>
+
+</article>
+
+
+<footer>
+    <p>Author: <strong>Jose Arteaga</strong></p>
+</footer>
+<script src="theme.js"></script>
+</body>
+</html>
