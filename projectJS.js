@@ -51,54 +51,7 @@ class ProjectCard extends HTMLElement{
     };
 }
 
-const webreg = {
-    title: "Webreg to Google Calendar",
-    image: "assets/projectCardWebreg.png",
-    description: "Transfers your Webreg class Schedule to Google Calendar",
-    redirectTo: "webreg.html"
-}
 
-var alreadyLoaded = false;
-var jsonArr = []
-const webregString = JSON.stringify(webreg);
-
-localStorage.setItem("webregData", webregString);
-
-
-loadLocalButton.addEventListener("click", ()=>{
-    console.log(alreadyLoaded);
-    if(!alreadyLoaded){
-        var Data = localStorage.getItem("webregData");
-        Data = JSON.parse(Data);
-        const card = document.createElement("project-card");
-        
-        const title = document.createElement("span");
-        title.setAttribute("slot","title");
-        title.textContent = Data.title;        
-
-        const image = document.createElement("img");
-        image.setAttribute("slot","image");
-        image.setAttribute("src",Data.image);
-        image.setAttribute("alt", Data.image + " Image");
-        image.setAttribute("loading","lazy");
-
-        const description = document.createElement("span");
-        description.setAttribute("slot", "description");
-        description.textContent = Data.description;
-
-        const redirectTo = document.createElement("span");
-        redirectTo.setAttribute("slot", "redirectTo") 
-        redirectTo.textContent = Data.redirectTo;
-
-        card.append(title, image, description, redirectTo);
-        document.querySelector(".projects").appendChild(card);
-        alreadyLoaded = true;
-    }
-    else{
-        alert("Projects Already Loaded!");
-    }
-
-})
 
 
 customElements.define("project-card",ProjectCard);
