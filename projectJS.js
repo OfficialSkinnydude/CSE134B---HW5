@@ -12,7 +12,9 @@ class ProjectCard extends HTMLElement{
             display: flex;
             flex-direction: row;
             justify-content: center;
+            text-align: center;
             }
+
 
         </style>
         <div class="card">
@@ -25,11 +27,32 @@ class ProjectCard extends HTMLElement{
             <p>
                 <slot name="description"></slot>
             </p>
+            <slot name="redirectTo" id="redirectTo" hidden></slot>
         </div>
         `;
-
     }
+    connectedCallback(){
+        this.directTo();
+    }
+
+    directTo(){
+        const directTo = this.shadowRoot.getElementById('redirectTo');
+
+        directTo.addEventListener("slotchange", () => {
+            const url = directTo.assignedNodes()[0]?.textContent.trim();
+            if(url){
+                this.shadowRoot.querySelector(".card").addEventListener("click", () =>{
+                    window.location.href = url;
+                });
+            }
+        });
+    };
 }
 
+
+
+
 customElements.define("project-card",ProjectCard);
+
+
 

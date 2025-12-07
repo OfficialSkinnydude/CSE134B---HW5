@@ -79,13 +79,28 @@ body{
     
 }
 
-article img{
-    width: 800px;  
-    height: 500px;
+article picture img{
+    width: 550px;  
+    height: 350px;
     object-fit: contain;
 
 }
 
+article picture{
+    display: flex;
+    justify-content: center;
+}
+
+video{
+    width: 550px; 
+    height: 350px; 
+}
+
+.video{
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
 .firstProject{
     display: flex;
     flex-direction: column;
@@ -143,10 +158,13 @@ project-card:hover{
     transform: scale(1.05);
 }
 project-card span{
+    color: black;
     display: flex;
     flex-direction: row;
+    padding-left: 5px;
+    padding-right: 5px;
     justify-content: center;
-    color: black;
+    text-align: center;
 } 
 
 project-card img{

@@ -19,73 +19,14 @@
 </div>
 
 <h1>My Projects</h1>
-<!-- <article class="firstProject">
-    <header>
-        <h2>Webreg to Google Calendar</h2>
-        <p>Made by: Jose Arteaga</p>
-    </header>
-    <img src="assets/WebregToGoogleCalendar_50.png" alt="WebregToGoogleCalendarScreenshot" loading="lazy">
-    <h3>Description</h3>
-    <p>This is a firefox extension that allows UCSD students to import their course schedule to
-        Google Calendar with a click of a download. No csv downloads necessary. This can save a students
-        time by no thaving to input everything manually. Simply click on "import schedule", sign in 
-        with the google account you need, and click "Import Schedule" again. Simple as that. 
-    </p>
-    <h4>Scope of Work</h4>
-    <p>
-        The duration of this project was a about a month of work. It started with me learning javascript and 
-        HTML. I learned the concept of "Manipulating the DOM", which is important for webscraping. I made a 
-        javascript program to scrape the course schedule using the DOM.
-    </p>
-    <p>
-        Once the courses had been scraped, the courses are then stored in a hashtable.
-        We have a function that handles parsing that course data, organizing it by discussions, midterms, and finals, as well
-        as course code, professor, etc.
-        
-    </p>
-    <p>
-        Once the course have been parsed, the Google Calendar API comes in. We have functions that create 
-        events using the API. Now before all this info can be process, we must handle Google Auth2.0.
-        <b>This was the hardest part</b>. After many hours of figuring it out and looking at source code,
-        the Authoraztion was setup. After signing in with Google, the events are then processed with
-        the API and voilà, your schedule is set and imported. 
-    </p>
-
-</article>
-
-<article class="secondProject">
-    <header>
-        <h2>RSVP Website</h2>
-        <p>Made by:Jose Arteaga</p>
-    </header>
-
-    <img src="assets/RSVP.png" alt="rsvp screenshot" loading="lazy">
-    <h3>Description</h3>
-    <p>This is a website that was used as an online invitation for a Quinceañera Event.
-        The website has a homepage where the user can register for the event. It shows an input form
-        where it required the user to input their Name, amount of people in their party, and their 
-        phone number. When submitting, it takes you to a custom page that tells you your information 
-        has been saved. Another detail that is not showned in the image was a countdown to the event.  
-    </p>
-    <p>
-        The <i>Hoteles</i> tab shows information of nearby hotels for the guests to stay at. The <i>Misa</i> 
-        tab shows information about the mass taking place. Lastly, the <i>Salon</i> tab shows information about
-        the venue.
-    </p>
-    <h4>Scope of Work</h4>
-    <p>
-        This project involved mainly HTML and CSS, with a little bit of javascript in the background
-        and an API called web3forms for storing information. Web3forms sends the information from your form 
-        to an email you provide. From there, I can see what the user inputted. I deployed the website using github pages 
-        and bought a custom domain for a year. 
-    </p> -->
     <div class="projects">
         <project-card class ="RSVP">
             <span slot="title">RSVP Website</span>
 
             <img slot="image" src="assets/projectCardRSVP.png" alt="rsvp screenshot" loading="lazy">
 
-            <span slot="description">This is a Description</span>
+            <span slot="description">An RSVP website for a Quinceañera</span>
+            <span slot="redirectTo">rsvp.html</span>
         </project-card>
 
         <project-card class ="Webreg">
@@ -93,7 +34,8 @@
 
             <img slot="image" src="assets/WebregToGoogleCalendar_50.png" alt="rsvp screenshot" loading="lazy">
 
-            <span slot="description">This is a Description</span>
+            <span slot="description">Transfers your Webreg class Schedule to Google Calendar</span>
+            <span slot="redirectTo">webreg.html</span>
         </project-card>
         
         <project-card class ="VectorSpace">
@@ -101,7 +43,10 @@
 
             <img slot="image" src="assets/vectorSpace.png" alt="rsvp screenshot" loading="lazy">
 
-            <span slot="description">This is a Description</span>
+            <span slot="description">A math videogame designed to teach middle schoolers how
+                to solve algebraic linear equations
+            </span>
+            <span slot="redirectTo">vectorspace.html</span>
         </project-card>
     </div>
 
