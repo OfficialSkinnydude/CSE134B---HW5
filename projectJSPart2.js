@@ -82,7 +82,7 @@ jsonArr.push(vectorSpace); */
 localStorage.setItem("projectData", JSON.stringify(jsonArr));
 
 
-loadLocalButton.addEventListener("click", ()=>{
+loadLocalButton.addEventListener("click", ()=>{ //Local Load
     if(!alreadyLoaded){
         var Data = localStorage.getItem("projectData");
         Data = JSON.parse(Data);
@@ -119,7 +119,7 @@ loadLocalButton.addEventListener("click", ()=>{
 
 });
 
-loadRemoteButton.addEventListener("click", ()=>{
+loadRemoteButton.addEventListener("click", ()=>{ //Remote Load
     if(!alreadyLoaded){
         var Data;
         fetch("https://api.jsonbin.io/v3/b/6935d151d0ea881f40192f35").then((res) => res.json())
