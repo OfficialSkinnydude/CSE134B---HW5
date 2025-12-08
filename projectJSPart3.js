@@ -196,10 +196,10 @@ SubmitButton.addEventListener("click",(e) =>{
     if(isValid){
         const card = document.createElement("project-card");
         const newProjectJSON = {
-        title: titleElement.value,
-        image: imageURL.value,
-        description: descriptionElement.value,
-        redirectTo: "sampleProject.html"
+        title: titleElement.value.trim(),
+        image: imageURL.value.trim(),
+        description: descriptionElement.value.trim(),
+        redirectTo: redirectToElement.value.trim()
         }
         jsonArr.push(newProjectJSON);
         localStorage.setItem("projectData",JSON.stringify(jsonArr));
@@ -224,7 +224,7 @@ SubmitButton.addEventListener("click",(e) =>{
         redirectTo.textContent = Data.redirectTo;
 
         card.append(title, image, description, redirectTo);
-        document.querySelector(".projects").appendChild(card);
+        document.getElementById("projects").appendChild(card);
     }    
     console.log(jsonArr);
     closeDialog();
@@ -239,7 +239,9 @@ deleteAllButton.addEventListener("click",(e) =>{
     e.preventDefault();
     jsonArr = [];
     localStorage.setItem("projectData", JSON.stringify(jsonArr));
-    projectDiv.remove();
+    while(projectDiv.firstChild){
+        projectDiv.removeChild(projectDiv.firstChild)
+    }
 })
 
 customElements.define("project-card",ProjectCard);
