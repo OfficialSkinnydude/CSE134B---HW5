@@ -10,6 +10,7 @@ const descriptionElement = document.getElementById("description");
 const redirectToElement = document.getElementById("redirectTo");
 const deleteAllButton = document.getElementById("deleteAll");
 const projectDiv = document.getElementById("projects")
+
 class ProjectCard extends HTMLElement{
     constructor(){
         super();
@@ -63,71 +64,20 @@ class ProjectCard extends HTMLElement{
 
 var alreadyLoaded = false;
 var jsonArr = []
+
 if(localStorage.getItem("projectData") === null){ //if there is no data saved in localStorage
     localStorage.setItem("projectData", JSON.stringify(jsonArr));
 }
+
 var loadData = JSON.parse(localStorage.getItem("projectData")); 
-/* if(loadData.length == 0){
-    console.log
-    const RSVP = {
-        title: "RSVP Website",
-        image: "assets/projectCardRSVP.png",
-        description: "An RSVP website for a Quinceañera",
-        redirectTo: "rsvp.html"
-    }
-    jsonArr.push(RSVP);
-
-    const webreg = {
-        title: "Webreg to Google Calendar",
-        image: "assets/projectCardWebreg.png",
-        description: "Transfers your Webreg class Schedule to Google Calendar",
-        redirectTo: "webreg.html"
-    }
-    jsonArr.push(webreg);
-    localStorage.setItem("projectData", JSON.stringify(jsonArr));
-
-    const vectorSpace = {
-        title: "Vector Space",
-        image: "assets/vectorSpace.png",
-        description: "A math videogame designed to teach middle schoolers how to solve algebraic linear equations",
-        redirectTo: "vectorspace.html"
-    }
-    jsonArr.push(vectorSpace);
-} */
-/* else{
-    jsonArr = loadData;
-} */
 jsonArr = loadData;
 
 
 loadLocalButton.addEventListener("click", ()=>{ //Local Load
     if(!alreadyLoaded){
-        var Data = localStorage.getItem("projectData");
-        Data = JSON.parse(Data);
+        var Data = JSON.parse(localStorage.getItem("projectData"));
         for(let i =0; i < jsonArr.length; i++){
-            const projectJSON = Data[i];
-            const card = document.createElement("project-card");
-            
-            const title = document.createElement("span");
-            title.setAttribute("slot","title");
-            title.textContent = projectJSON.title;        
-
-            const image = document.createElement("img");
-            image.setAttribute("slot","image");
-            image.setAttribute("src",projectJSON.image);
-            image.setAttribute("alt", projectJSON.image + " Image");
-            image.setAttribute("loading","lazy");
-
-            const description = document.createElement("span");
-            description.setAttribute("slot", "description");
-            description.textContent = projectJSON.description;
-
-            const redirectTo = document.createElement("span");
-            redirectTo.setAttribute("slot", "redirectTo") 
-            redirectTo.textContent = projectJSON.redirectTo;
-
-            card.append(title, image, description, redirectTo);
-            document.querySelector(".projects").appendChild(card);
+            createProjectCard(Data,i);
         }
         alreadyLoaded = true;
     }
@@ -137,6 +87,8 @@ loadLocalButton.addEventListener("click", ()=>{ //Local Load
 
 });
 
+
+
 loadRemoteButton.addEventListener("click", ()=>{ //Remote Load
     if(!alreadyLoaded){
         var Data;
@@ -144,29 +96,7 @@ loadRemoteButton.addEventListener("click", ()=>{ //Remote Load
         .then(data => {
             Data = data.record.projects;
             for(let i =0; i < Data.length; i++){
-                const projectJSON = Data[i];
-                const card = document.createElement("project-card");
-                
-                const title = document.createElement("span");
-                title.setAttribute("slot","title");
-                title.textContent = projectJSON.title;        
-
-                const image = document.createElement("img");
-                image.setAttribute("slot","image");
-                image.setAttribute("src",projectJSON.image);
-                image.setAttribute("alt", projectJSON.image + " Image");
-                image.setAttribute("loading","lazy");
-
-                const description = document.createElement("span");
-                description.setAttribute("slot", "description");
-                description.textContent = projectJSON.description;
-
-                const redirectTo = document.createElement("span");
-                redirectTo.setAttribute("slot", "redirectTo") 
-                redirectTo.textContent = projectJSON.redirectTo;
-
-                card.append(title, image, description, redirectTo);
-                document.querySelector(".projects").appendChild(card);
+                createProjectCard(Data,i);
             }
             alreadyLoaded = true;
         })
@@ -175,6 +105,32 @@ loadRemoteButton.addEventListener("click", ()=>{ //Remote Load
         alert("Projects Already Loaded!")
     }
 });
+
+function createProjectCard(data, index){
+    const projectJSON = data[index];
+    const card = document.createElement("project-card");
+    
+    const title = document.createElement("span");
+    title.setAttribute("slot","title");
+    title.textContent = projectJSON.title;        
+
+    const image = document.createElement("img");
+    image.setAttribute("slot","image");
+    image.setAttribute("src",projectJSON.image);
+    image.setAttribute("alt", projectJSON.image + " Image");
+    image.setAttribute("loading","lazy");
+
+    const description = document.createElement("span");
+    description.setAttribute("slot", "description");
+    description.textContent = projectJSON.description;
+
+    const redirectTo = document.createElement("span");
+    redirectTo.setAttribute("slot", "redirectTo") 
+    redirectTo.textContent = projectJSON.redirectTo;
+
+    card.append(title, image, description, redirectTo);
+    document.querySelector(".projects").appendChild(card);
+}
 
 function showDialog(){
     popUp.showModal()
@@ -188,13 +144,10 @@ addProjectButton.addEventListener("click", ()=>{
     showDialog();
 });
 
-console.log(jsonArr);
 SubmitButton.addEventListener("click",(e) =>{
     e.preventDefault()
     var isValid = form.checkValidity();
-    console.log(isValid)
     if(isValid){
-        const card = document.createElement("project-card");
         const newProjectJSON = {
         title: titleElement.value.trim(),
         image: imageURL.value.trim(),
@@ -204,27 +157,7 @@ SubmitButton.addEventListener("click",(e) =>{
         jsonArr.push(newProjectJSON);
         localStorage.setItem("projectData",JSON.stringify(jsonArr));
         var Data = JSON.parse(localStorage.getItem("projectData"));        
-        Data = Data[Data.length - 1];
-        const title = document.createElement("span");
-        title.setAttribute("slot","title");
-        title.textContent = Data.title;        
-
-        const image = document.createElement("img");
-        image.setAttribute("slot","image");
-        image.setAttribute("src",Data.image);
-        image.setAttribute("alt", Data.image + " Image");
-        image.setAttribute("loading","lazy");
-
-        const description = document.createElement("span");
-        description.setAttribute("slot", "description");
-        description.textContent = Data.description;
-
-        const redirectTo = document.createElement("span");
-        redirectTo.setAttribute("slot", "redirectTo") 
-        redirectTo.textContent = Data.redirectTo;
-
-        card.append(title, image, description, redirectTo);
-        document.getElementById("projects").appendChild(card);
+        createProjectCard(Data,Data.length - 1);
     }    
     console.log(jsonArr);
     closeDialog();
