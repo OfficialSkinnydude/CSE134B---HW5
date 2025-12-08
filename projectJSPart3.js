@@ -10,6 +10,10 @@ const descriptionElement = document.getElementById("description");
 const redirectToElement = document.getElementById("redirectTo");
 const deleteAllButton = document.getElementById("deleteAll");
 const projectDiv = document.getElementById("projects")
+const updateButton = document.getElementById("update");
+const updatePopUp = document.getElementById('updatePopUp');
+const submitUpdateButton = document.getElementById("submitUpdateButton");
+const cancelUpdateButton = document.getElementById("cancelUpdate");
 
 class ProjectCard extends HTMLElement{
     constructor(){
@@ -89,6 +93,7 @@ loadLocalButton.addEventListener("click", ()=>{ //Local Load
 
 
 
+
 loadRemoteButton.addEventListener("click", ()=>{ //Remote Load
     if(!alreadyLoaded){
         var Data;
@@ -137,12 +142,37 @@ function showDialog(){
 }
 
 function closeDialog(){
-    popUp.close()
+    popUp.close();
 }
 
 addProjectButton.addEventListener("click", ()=>{
     showDialog();
 });
+
+updateButton.addEventListener("click",()=>{
+    updatePopUp.showModal();
+})
+
+submitUpdateButton.addEventListener("click",(e) =>{
+    e.preventDefault()
+    var isValid = formuUpdate.checkValidity();
+    var titleToUpdate = document.getElementById('updateProject').value.trim();
+    console.log(isValid);
+    if(isValid){
+        for(let i = 0; i < jsonArr.length; i++){
+            if(jsonArr[i].title == titleToUpdate){
+                jsonArr[i].title = document.getElementById('titleUpdate').value.trim();
+                jsonArr[i].image = document.getElementById('imageSourceUpdate').value.trim();
+                jsonArr[i].description = document.getElementById('descriptionUpdate').value.trim();
+                jsonArr[i].redirectTo = document.getElementById('redirectToUpdate').value.trim();
+                localStorage.setItem("projectData", JSON.stringify(jsonArr));
+                break;
+            }
+        }
+
+    }    
+    updatePopUp.close();
+})
 
 SubmitButton.addEventListener("click",(e) =>{
     e.preventDefault()
@@ -162,6 +192,10 @@ SubmitButton.addEventListener("click",(e) =>{
     console.log(jsonArr);
     closeDialog();
 });
+cancelUpdateButton.addEventListener("click",(e)=>{
+    e.preventDefault();
+    updatePopUp.close();
+})
 
 cancelButton.addEventListener("click",(e) => {
     e.preventDefault();

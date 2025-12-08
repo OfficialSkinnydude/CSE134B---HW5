@@ -23,6 +23,7 @@
     <button id ="loadRemote">Load Remote</button>
     <button id ="addProject">Add Project</button>
     <button id="deleteAll">Delete All</button>
+    <button id="update">Update</button>
 </div>
     <div class="projects" id="projects">
 <!--         <project-card class ="RSVP">
@@ -71,6 +72,27 @@
             <input id="redirectTo" type="text" required>
             <button id="cancel">Cancel</button>
             <button id="submitButton">Submit</button>
+        </form>
+    </dialog>
+
+    <dialog id="updatePopUp">
+        <form id="formuUpdate">
+            <label>Project to Update:</label>
+            <input id="updateProject" type="text" required>
+
+            <label>Title:</label>
+            <input id ="titleUpdate" type="text" name="fullName" required minlength="1" maxlength="150" pattern="[A-Za-z ]+">
+
+            <label>imageURL:</label>
+            <input id ="imageSourceUpdate" type="text" required>
+
+            <label>description:</label>
+            <input id="descriptionUpdate" type="text" required>
+
+            <label>redirectTo:</label>
+            <input id="redirectToUpdate" type="text" required>
+            <button id="cancelUpdate">Cancel</button>
+            <button id="submitUpdateButton">Submit</button>
         </form>
     </dialog>
 
